@@ -95,7 +95,6 @@ class Weather extends React.Component<WeatherProps> {
               <WeatherCard temperature="" date={new Date()} />
             </div>
             <div id="bottom-row-cards">
-              {/* TODO: ROWS on MOBILE */}
               {days.map((day: DayWeather, i: number) => (
                 <div className="small-card-container">
                   <div className="small-card">
