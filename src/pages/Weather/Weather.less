@@ -1,0 +1,227 @@
+@import url("../../less/index.less");
+
+@font-face {
+  font-family: "Nexa Extra Light";
+  src: url("../..//assets/fonts/nexa-extra-light.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nexa Extra Bold";
+  src: url("../..//assets/fonts/nexa-extra-bold.ttf") format("truetype");
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: @app-primary;
+}
+
+@media @mobile {
+  #weather {
+    width: 90%;
+  }
+  .weather-header {
+    padding: 0;
+  }
+  #bottom-row-cards {
+    height: 100% !important;
+  }
+  .small-card {
+    text-align: start;
+    width: 20%;
+  }
+  .small-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 10vh !important;
+    align-items: center;
+    justify-content: space-around;
+    background-color: @app-primary;
+    margin-bottom: 0.25rem;
+    margin-left: 0.125rem;
+    margin-right: 0.125rem;
+    border-radius: 5px;
+  }
+  #main-card-container {
+    height: 32.5vh !important;
+    justify-content: center;
+  }
+  #weather-information {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  #date {
+    margin-top: 1rem !important;
+  }
+  .small-card-weather-icon {
+    width: 15% !important;
+    background-color: aquamarine;
+  }
+  #top-small-card {
+    padding: 0 !important;
+    font-size: 1.25rem;
+  }
+  .small-card-weather-temp {
+    width: 15%;
+  }
+  #icon {
+    height: 15vh;
+  }
+}
+
+@media @web {
+  #weather {
+    width: 44%;
+  }
+  .weather-header {
+    padding-left: 4rem;
+    padding-right: 4rem;
+    height: 14vh;
+  }
+  #bottom-row-cards {
+    height: 27vh;
+    justify-content: space-around;
+  }
+  .small-card-container {
+    width: 24.5%;
+    background-color: @app-primary;
+    border-radius: 0px 0px 7.5px 7.5px;
+    margin-top: 0.125rem;
+  }
+  .small-card-weather-icon {
+    margin-top: 5%;
+    height: 40%;
+  }
+}
+
+*:focus {
+  outline: none;
+}
+
+#page {
+  text-align: center;
+  background-color: @app-primary;
+  display: flex;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: @text-primary;
+  font-family: "Nexa Extra Light";
+  align-items: center;
+}
+
+.weather-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.weather-header > a {
+  width: 30%;
+  font-family: "Nexa Extra Light";
+  color: @text-primary;
+}
+
+.weather-header > a:focus {
+  font-family: "Nexa Extra Bold";
+  color: @text-secondary;
+}
+
+.weather-header > a:hover {
+  color: @text-secondary;
+}
+
+.weather-body {
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.125rem;
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
+}
+
+#bottom-row-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: "center";
+}
+
+.small-card-container {
+  padding-bottom: 0.125rem;
+  height: 95%;
+}
+
+.small-card {
+  margin-left: 0.125rem;
+  margin-right: 0.125rem;
+}
+
+#top-small-card {
+  padding-top: 1rem;
+  font-size: 1.25rem;
+}
+
+#small-card-0 {
+  border-radius: 0px 0px 0px 7.5px;
+}
+
+#small-card-3 {
+  border-radius: 0px 0px 7.5px 0px;
+}
+
+.bottom-small-card {
+  font-family: "Nexa Extra Bold";
+  margin-top: -0.25rem;
+}
+
+#main-card-container {
+  margin: 0.1rem;
+  background-color: @app-primary;
+  border-radius: 7.5px 7.5px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#weather-information {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2rem 0 2rem 0;
+}
+
+.main-card-icon {
+  padding-left: 0.5rem;
+  padding-right: 0.51rem;
+}
+
+#icon {
+  background-color: #5f94bf;
+  border-radius: 10px;
+}
+
+#date {
+  margin-top: 2rem;
+}
+
+#temperature {
+  font-family: "Nexa Extra Bold";
+  margin: 0;
+}
+
+.small-card-weather-icon {
+  background-color: #5f94bf;
+  border-radius: 10px;
+}
+
+.main-card-info {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}

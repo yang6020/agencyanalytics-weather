@@ -1,22 +1,32 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Weather from "./components /Weather";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { RouteComponentProps } from "react-router";
+import NotFound from "./pages/404";
+import Weather from "./pages/Weather";
+import { Config } from "./types";
+
+const config: Config = require("./config.json");
+
+const paths = ["/"].concat(config.cities.map((city) => `/${city}`));
+interface MatchParams {
+  city?: string;
+}
+
+console.log(paths);
+export interface Props extends RouteComponentProps<MatchParams> {}
 
 function AppRouter() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/">
-          <Weather city="ottawa" />
+        <Route
+          exact
+          path={paths}
+          render={(props: Props) => <Weather {...props} />}
+        />
+        <Route path="/404">
+          <NotFound />
         </Route>
-        <Route path="/ottawa">
-          <Weather city="ottawa" />
-        </Route>
-        <Route path="/moscow">
-          <Weather city="moscow" />
-        </Route>
-        <Route path="/tokyo">
-          <Weather city="tokyo" />
-        </Route>
+        <Redirect to="/404" />
       </Switch>
     </BrowserRouter>
   );

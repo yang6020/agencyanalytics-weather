@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "Nexa Extra Light";
+  src: url("../..//assets/fonts/nexa-extra-light.ttf") format("truetype");
+  font-style: normal;
+}
+@font-face {
+  font-family: "Nexa Extra Bold";
+  src: url("../..//assets/fonts/nexa-extra-bold.ttf") format("truetype");
+  font-style: normal;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+#page {
+  text-align: center;
+  background-color: #eef6fa;
+  display: flex;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #333338;
+  font-family: "Nexa Extra Bold";
+  align-items: center;
+}
+/*# sourceMappingURL=404.css.map */
