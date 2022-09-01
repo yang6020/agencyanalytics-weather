@@ -11,7 +11,6 @@ interface MatchParams {
   city?: string;
 }
 
-console.log(paths);
 export interface Props extends RouteComponentProps<MatchParams> {}
 
 function AppRouter() {
