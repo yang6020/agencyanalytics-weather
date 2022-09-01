@@ -35,7 +35,6 @@ body {
     height: 10vh !important;
     align-items: center;
     justify-content: space-around;
-    background-color: #eef6fa;
     margin-bottom: 0.25rem;
     margin-left: 0.125rem;
     margin-right: 0.125rem;
@@ -81,7 +80,6 @@ body {
   }
   .small-card-container {
     width: 24.5%;
-    background-color: #eef6fa;
     border-radius: 0px 0px 7.5px 7.5px;
     margin-top: 0.125rem;
   }
@@ -138,6 +136,7 @@ body {
 .small-card-container {
   padding-bottom: 0.125rem;
   height: 95%;
+  background-color: #eef6fa;
 }
 .small-card {
   margin-left: 0.125rem;
@@ -186,6 +185,7 @@ body {
 #temperature {
   font-family: "Nexa Extra Bold";
   margin: 0;
+  width: 7vw;
 }
 .small-card-weather-icon {
   background-color: #5f94bf;

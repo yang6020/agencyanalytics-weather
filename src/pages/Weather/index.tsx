@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 import "./Weather.css";
@@ -29,6 +29,7 @@ class Weather extends React.Component<Props> {
     selectedCity: "",
     cities: config.cities,
     days: [],
+    error: false
   };
 
   getDay(dt: number): string {
@@ -75,9 +76,9 @@ class Weather extends React.Component<Props> {
           days: daysArray,
         });
       })
-      .catch(function (error) {
-        // console.log(error);
-      });
+      .catch(() => 
+        this.setState({error:true})
+      );
   }
 
   initialFocus() {
@@ -121,61 +122,74 @@ class Weather extends React.Component<Props> {
     return (
       <div id="page">
         <div id="weather">
-          <div className="weather-header">
-            {this.state.cities.map((city, i) => (
-              <Link
-                ref={
-                  this[("city" + i) as keyof Weather] as
-                    | React.Ref<HTMLAnchorElement>
-                    | undefined
-                }
-                style={{ textDecoration: "none" }}
-                to={`/${city}`}
-              >
-                <h4>{city.toUpperCase()}</h4>
-              </Link>
-            ))}
-          </div>
-          <div className="weather-body">
-            <div id="main-card-container">
-              <div id="date">Today</div>
-              <div id="weather-information">
-                <div className="main-card-icon">
-                  <img
-                    id="icon"
-                    src={`http://openweathermap.org/img/wn/${today?.weather[0]?.icon}@2x.png`}
-                    alt="weather=icon"
-                  />
+          {this.state.error ? (
+            <div>
+              <h1>500</h1>
+              <h3>Sorry something went wrong.</h3>
+              <h5>Please contact justinvyang@gmail.com</h5>
+            </div>
+          ) : (
+            <Fragment>
+              <div className="weather-header">
+                {this.state.cities.map((city, i) => (
+                  <Link
+                    ref={
+                      this[("city" + i) as keyof Weather] as
+                        | React.Ref<HTMLAnchorElement>
+                        | undefined
+                    }
+                    style={{ textDecoration: "none" }}
+                    to={`/${city}`}
+                  >
+                    <h4>{city.toUpperCase()}</h4>
+                  </Link>
+                ))}
+              </div>
+              <div className="weather-body">
+                <div id="main-card-container">
+                  <div id="date">Today</div>
+                  <div id="weather-information">
+                    <div className="main-card-icon">
+                      <img
+                        id="icon"
+                        src={`http://openweathermap.org/img/wn/${today?.weather[0]?.icon}@2x.png`}
+                        alt="weather=icon"
+                      />
+                    </div>
+                    <div className="main-card-info">
+                      <h1 id="temperature">
+                        {Math.ceil(today.temp.day)}
+                        {"\u00b0"}
+                      </h1>
+                      <div className="info">{today?.weather[0]?.main}</div>
+                    </div>
+                  </div>
                 </div>
-                <div className="main-card-info">
-                  <h1 id="temperature">
-                    {Math.ceil(today.temp.day)}
-                    {"\u00b0"}
-                  </h1>
-                  <div className="info">{today?.weather[0]?.main}</div>
+
+                <div id="bottom-row-cards">
+                  {days.map((day: WeatherDay, i: number) => (
+                    <div className="small-card-container">
+                      <div id="top-small-card" className="small-card">
+                        {day?.weekday}
+                      </div>
+                      <img
+                        className="small-card-weather-icon"
+                        src={`http://openweathermap.org/img/wn/${day?.weather[0].icon}@2x.png`}
+                        alt="weather=icon"
+                      />
+                      <div
+                        id={`small-card-${i}`}
+                        className=" bottom-small-card"
+                      >
+                        {Math.ceil(day?.temp?.day)}
+                        {"\u00b0"}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
-
-            <div id="bottom-row-cards">
-              {days.map((day: WeatherDay, i: number) => (
-                <div className="small-card-container">
-                  <div id="top-small-card" className="small-card">
-                    {day?.weekday}
-                  </div>
-                  <img
-                    className="small-card-weather-icon"
-                    src={`http://openweathermap.org/img/wn/${day?.weather[0].icon}@2x.png`}
-                    alt="weather=icon"
-                  />
-                  <div id={`small-card-${i}`} className=" bottom-small-card">
-                    {Math.ceil(day?.temp?.day)}
-                    {"\u00b0"}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+            </Fragment>
+          )}
         </div>
       </div>
     );

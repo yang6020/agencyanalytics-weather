@@ -8,6 +8,7 @@ export interface WeatherState {
   selectedCity: string;
   cities: string[];
   days: WeatherDay[];
+  error: boolean
 }
 
 export interface WeatherDay {
